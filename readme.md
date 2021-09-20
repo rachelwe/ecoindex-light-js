@@ -1,5 +1,7 @@
 # Ecoindex light javascript
 
+WIP : fork créée pour permettre l'utilisation de styles et une intégration propre à chaque site web
+
 Version bêta pour mesurer l'ecoindex de la page en cours.
 Le but de ce script est de faire une mesure avec très peu de code javascript simple, pour se rapprocher le plus possible d'un indice similaire à ecoindex.
 Pour informer l'utilisateur de l'impact de la page en cours.
