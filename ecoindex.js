@@ -138,11 +138,20 @@ ecoindex = function(dom, resources)
 	// black or white for RGAA V4 compliance, at least 4.5 contrast ratio
 	document.documentElement.style.setProperty('--ecoindex-contrasted-neutral-color', textColor);
 
-
 	// Ajout de la note dans une balise html ayant l'attribut [data-ecoindex]
 	const ecoindexWrapper = document.querySelector('[data-ecoindex]');
-	ecoindexWrapper.innerHTML = '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" data-ecoindex-link target="_blank" rel="noreferrer" title="'+ecotitle+'">'+ ecoIndex.toFixed(0) + '/' +EcoIndexGrade+(p100error>0?'*':'')+'</a>';
+	const ecoindexLink = '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" data-ecoindex-link target="_blank" rel="noreferrer"  aria-describedby="ecoindex-extended">'+ ecoIndex.toFixed(0) + '/' +EcoIndexGrade+(p100error>0?'*':'')+'</a>'
+	const ecoindexDesc = '<div role="tooltip" id="ecoindex-extended">'+ecotitle+'</div>'
+	ecoindexWrapper.innerHTML = ecoindexLink + ecoindexDesc;
 
+	// tooltip positioning helper, does not respond to window resize yet
+	const tooltip = document.querySelector('#ecoindex-extended');
+	tooltip.style.display = 'block';
+	const docWidth = window.innerWidth || document.documentElement.clientWidth
+	if (tooltip.getBoundingClientRect().right > docWidth) {
+		tooltip.style.setProperty('--tooltip-offset', (docWidth - tooltip.getBoundingClientRect().right) + 'px');
+		tooltip.style.display = '';
+	}
 }
 
 

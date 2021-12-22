@@ -1,3 +1,28 @@
+[data-ecoindex] {
+  display: inline-block;
+  position: relative;
+}
+
+[role="tooltip"] {
+  visibility: hidden;
+  box-sizing: border-box;
+  display: none;
+  position: absolute;
+  background-color: #f2f2f2;
+  bottom: 110%;
+  padding: .5rem;
+  min-width: 17rem;
+  max-width: 70vw;
+  border-radius: 5px;
+  transform: translateX(calc(var(--tooltip-offset, 0) - 15px))
+}
+
+[aria-describedby]:hover + [role="tooltip"],
+[aria-describedby]:focus + [role="tooltip"] {
+  display: block;
+  visibility: visible;
+}
+
 [data-ecoindex-link] {
   display: inline-block;
   padding: .2rem .3rem;
@@ -8,6 +33,6 @@
     Using the css variables generated in js for the colors,
     with neutral fallbacks
     */
-  color: var(--ecoindex-contrasted-neutral-color, #000);
-  background-color: var(--ecoindex-color, #fff);
+  color: var(--ecoindex-contrasted-neutral-color, #fff);
+  background-color: var(--ecoindex-color, #000);
 }
